@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.papercheck.controller.MainController"
+            prefHeight="600.0" prefWidth="800.0">
+    <top>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="20" right="20" bottom="10" left="20"/>
+            </padding>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Button fx:id="selectFileButton" text="选择文件" onAction="#handleSelectFile"/>
+                <Label fx:id="filePathLabel" text="未选择文件"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button fx:id="checkButton" text="开始检查" onAction="#handleCheck" disable="true"/>
+            </HBox>
+        </VBox>
+    </top>
+    
+    <center>
+        <TabPane>
+            <tabs>
+                <Tab text="检查结果" closable="false">
+                    <TableView fx:id="resultsTable">
+                        <columns>
+                            <TableColumn fx:id="issueTypeColumn" text="问题类型" prefWidth="100"/>
+                            <TableColumn fx:id="locationColumn" text="位置" prefWidth="100"/>
+                            <TableColumn fx:id="descriptionColumn" text="问题描述" prefWidth="300"/>
+                            <TableColumn fx:id="suggestionColumn" text="修改建议" prefWidth="250"/>
+                        </columns>
+                    </TableView>
+                </Tab>
+                <Tab text="检查规则" closable="false">
+                    <VBox spacing="10">
+                        <padding>
+                            <Insets top="10" right="20" bottom="10" left="20"/>
+                        </padding>
+                        <Label text="论文格式检查规则" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+                        <ListView fx:id="rulesListView"/>
+                    </VBox>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </center>
+    
+    <bottom>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="10" right="20" bottom="20" left="20"/>
+            </padding>
+            
+            <HBox alignment="CENTER_RIGHT" spacing="10">
+                <Label fx:id="statusLabel" text="就绪"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button fx:id="previewButton" text="创建修复预览" onAction="#handlePreview" disable="true"/>
+                <Button fx:id="fixButton" text="修复文档" onAction="#handleFix" disable="true"/>
+                <Button fx:id="exportButton" text="导出报告" onAction="#handleExport" disable="true"/>
+            </HBox>
+            
+            <Label text="注意：修复前请先创建预览查看效果，并建议备份原始文档" 
+                   style="-fx-text-fill: #cc0000; -fx-font-style: italic;"/>
+        </VBox>
+    </bottom>
+</BorderPane> 

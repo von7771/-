@@ -1,0 +1,4 @@
+com\papercheck\service\PaperFormatChecker.class
+com\papercheck\Main.class
+com\papercheck\controller\MainController.class
+com\papercheck\model\CheckResult.class
